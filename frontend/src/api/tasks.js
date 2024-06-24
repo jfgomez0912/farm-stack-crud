@@ -1,4 +1,5 @@
 import { Configuration, TasksApiFactory } from "../client";
 
-const config = new Configuration({ basePath: "http://localhost:8000" });
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+const config = new Configuration({ basePath: BACKEND_URL });
 export const tasksApi = TasksApiFactory(config);
