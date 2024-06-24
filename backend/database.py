@@ -1,12 +1,13 @@
 from typing import Any, Mapping
 
 from bson import ObjectId
+from decouple import config
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import ReturnDocument
 
 from models import Task, TaskCollection, UpdateTask
 
-client = AsyncIOMotorClient("mongodb://localhost:27017")
+client = AsyncIOMotorClient(config("MONGODB_URL"))
 db = client.get_database("tasks_database")
 tasks_collection = db.get_collection("tasks")
 
